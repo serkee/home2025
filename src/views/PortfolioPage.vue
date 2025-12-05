@@ -1,34 +1,97 @@
 <template>
-  <section class="portfolio-section">
-    <div class="container">
-      <h1>Portfolio</h1>
-      <div class="filters">
-        <button :class="{ active: currentFilter === 'all' }" @click="filterItems('all')">All</button>
-        <button :class="{ active: currentFilter === 'development' }" @click="filterItems('development')">개발</button>
-        <button :class="{ active: currentFilter === 'publishing' }" @click="filterItems('publishing')">퍼블리싱</button>
-      </div>
-      <div class="portfolio-grid" ref="portfolioGrid">
-        <div
-          class="portfolio-item"
-          v-for="project in projects"
-          :key="project.id"
-          :class="[`${project.class}`, `item-${project.id}`]"
-        >
-          <a @click.prevent="handleLinkClick(project.link)" target="_blank">
-            <img :src="project.thumbnail" :alt="project.title" />
-            <span class="overlay">
-              <strong>{{ project.title }}</strong>
-              <em>{{ project.description }}</em>
-            </span>
-          </a>
+  <div class="portfolio-wrapper">
+    <!-- Hero Section -->
+    <section class="hero-section section-padding bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 text-white relative overflow-hidden">
+      <div class="absolute inset-0 bg-black/20"></div>
+      <div class="absolute top-20 left-20 w-64 h-64 bg-accent-500/10 rounded-full blur-3xl animate-pulse"></div>
+      <div class="absolute bottom-20 right-20 w-48 h-48 bg-accent-400/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+
+      <div class="container-custom relative z-10">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
+            나의 <span class="text-accent-400">포트폴리오</span>
+          </h1>
+          <p class="text-xl md:text-2xl text-neutral-300 mb-8 animate-slide-up delay-300">
+            다양한 프로젝트 경험과 기술 스택을 만나보세요
+          </p>
+          <div class="w-24 h-1 bg-accent-400 mx-auto rounded-full animate-slide-up delay-500"></div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio-section section-padding bg-neutral-50">
+      <div class="container-custom">
+        <!-- Filter Buttons -->
+        <div class="filters-container">
+          <div class="filters">
+            <button
+              :class="{ active: currentFilter === 'all' }"
+              @click="filterItems('all')"
+              class="filter-btn"
+            >
+              <span>All Projects</span>
+              <div class="filter-indicator"></div>
+            </button>
+            <button
+              :class="{ active: currentFilter === 'development' }"
+              @click="filterItems('development')"
+              class="filter-btn"
+            >
+              <span>Development</span>
+              <div class="filter-indicator"></div>
+            </button>
+            <button
+              :class="{ active: currentFilter === 'publishing' }"
+              @click="filterItems('publishing')"
+              class="filter-btn"
+            >
+              <span>Publishing</span>
+              <div class="filter-indicator"></div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Portfolio Grid -->
+        <div class="portfolio-grid" ref="portfolioGrid">
+          <div
+            class="portfolio-item"
+            v-for="project in filteredProjects"
+            :key="project.id"
+            :class="[`${project.class}`, `item-${project.id}`]"
+          >
+            <div class="portfolio-card group" @click.prevent="handleLinkClick(project.link)">
+              <div class="portfolio-image">
+                <img :src="project.thumbnail" :alt="project.title" />
+                <div class="portfolio-overlay">
+                  <div class="overlay-content">
+                    <i class="fas fa-external-link-alt text-2xl mb-2"></i>
+                    <span>View Project</span>
+                  </div>
+                </div>
+              </div>
+              <div class="portfolio-content">
+                <h3 class="portfolio-title">{{ project.title }}</h3>
+                <p class="portfolio-description">{{ project.description }}</p>
+                <div class="portfolio-category">
+                  <span class="category-badge" :class="project.class">
+                    {{ project.class === 'development' ? '개발' : '퍼블리싱' }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </template>
 
 <script>
 /* eslint-disable no-undef */
+import { gsap } from "gsap";
+import Isotope from "isotope-layout";
+
 export default {
   data() {
     return {
@@ -45,7 +108,14 @@ export default {
           title: "태강가설",
           description: "Vue, 파이어베이스",
           thumbnail: require("@/assets/images/contents/thumb_taekang.png"),
-          link: "https://routefinding.kr/",
+          link: "https://taekang.shop",
+          class: "development",
+        },{
+          id: 1000,
+          title: "러닝계산기",
+          description: "Vue",
+          thumbnail: require("@/assets/images/contents/thumb_run.jpg"),
+          link: "https://calcul-f8059.web.app/",
           class: "development",
         },{
           id: 1,
@@ -393,6 +463,14 @@ export default {
       currentFilter: 'all', // 현재 선택된 필터를 추적
     };
   },
+  computed: {
+    filteredProjects() {
+      if (this.currentFilter === 'all') {
+        return this.projects;
+      }
+      return this.projects.filter(project => project.class === this.currentFilter);
+    },
+  },
   methods: {
     handleLinkClick(link) {
       if (!link) {
@@ -403,6 +481,27 @@ export default {
         window.open(link, "_blank");
       }
     },
+    animatePortfolioItems() {
+      // 기본적으로 보이도록 설정 - 애니메이션 효과는 최소화
+      const items = this.$refs.portfolioGrid?.querySelectorAll('.portfolio-item');
+      if (!items) return;
+
+      // 부드러운 등장 효과 (선택사항)
+      gsap.fromTo(items,
+        {
+          opacity: 0.7,
+          y: 10
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.4,
+          stagger: 0.05,
+          ease: 'power2.out'
+        }
+      );
+    },
+
     filterItems(filter) {
       if (!this.iso) {
         console.error("Isotope 인스턴스가 초기화되지 않았습니다.");
@@ -414,173 +513,211 @@ export default {
       else if (filter === "publishing") filterValue = ".publishing";
       console.log(`Filtering with: ${filterValue}`);
       this.iso.arrange({ filter: filterValue });
+
+      // 필터링 후 애니메이션
+      this.$nextTick(() => {
+        setTimeout(() => {
+          this.animatePortfolioItems();
+        }, 50);
+      });
     },
   },
   mounted() {
     this.$nextTick(() => {
       const grid = this.$refs.portfolioGrid;
+
+      // Isotope 초기화 - 최적화된 Masonry 설정
       this.iso = new Isotope(grid, {
         itemSelector: ".portfolio-item",
-        layoutMode: "masonry",
         masonry: {
-          columnWidth: ".portfolio-item",
+          columnWidth: '.portfolio-item',
           gutter: 20,
+          fitWidth: true
         },
-        percentPosition: true,
+        percentPosition: true
       });
 
-      // 이미지 로드가 완료된 후 Isotope 레이아웃 갱신
-      imagesLoaded(grid).on("progress", () => {
+      // 이미지 로드가 완료된 후 레이아웃 갱신
+      imagesLoaded(grid, () => {
         this.iso.layout();
       });
 
       // 초기 필터 설정
       this.filterItems("all");
+
+      // 애니메이션 실행
+      setTimeout(() => {
+        this.animatePortfolioItems();
+      }, 100);
     });
   },
 };
 </script>
 
-<style lang="scss" scoped>
-.portfolio-section {
-  padding: 3rem 0;
+<style scoped>
+/* Animation delays */
+.delay-300 {
+  animation-delay: 0.3s;
+}
 
-  h1 {
-    text-align: center;
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 2rem;
+.delay-500 {
+  animation-delay: 0.5s;
+}
+
+.delay-1000 {
+  animation-delay: 1s;
+}
+
+/* Filters Container */
+.filters-container {
+  @apply text-center mb-12;
+}
+
+.filters {
+  @apply inline-flex bg-white rounded-2xl p-2 shadow-lg border border-neutral-200;
+}
+
+.filter-btn {
+  @apply relative px-6 py-3 rounded-xl font-medium transition-all duration-300;
+  @apply text-neutral-600 hover:text-neutral-900 cursor-pointer;
+  @apply flex flex-col items-center gap-1 min-w-[120px];
+}
+
+.filter-btn.active {
+  @apply text-accent-600 bg-accent-50;
+}
+
+.filter-indicator {
+  @apply w-0 h-0.5 bg-accent-500 rounded-full transition-all duration-300;
+  transform: scaleX(0);
+}
+
+.filter-btn.active .filter-indicator {
+  @apply w-full;
+  transform: scaleX(1);
+}
+
+/* Portfolio Grid */
+.portfolio-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Portfolio Item */
+.portfolio-item {
+  width: 280px;
+  margin-bottom: 20px;
+}
+
+/* Responsive Layout */
+@media (max-width: 640px) {
+  .portfolio-item {
+    width: 250px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .portfolio-item {
+    width: 300px;
+  }
+}
+
+.portfolio-card {
+  @apply bg-white rounded-2xl shadow-lg border border-neutral-200 overflow-hidden;
+  @apply transform transition-all duration-300 hover:scale-105 hover:shadow-2xl;
+  @apply cursor-pointer;
+}
+
+.portfolio-image {
+  @apply relative overflow-hidden;
+}
+
+.portfolio-image img {
+  @apply w-full object-cover transition-transform duration-500;
+  @apply group-hover:scale-110;
+}
+
+.portfolio-overlay {
+  @apply absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100;
+  @apply transition-opacity duration-300 flex items-center justify-center;
+}
+
+.overlay-content {
+  @apply text-white text-center;
+  i {
+    @apply text-2xl mb-2 block transform transition-transform duration-300;
+    @apply group-hover:scale-110;
+  }
+  span {
+    @apply font-medium;
+  }
+}
+
+.portfolio-content {
+  @apply p-6;
+}
+
+.portfolio-title {
+  @apply text-lg font-bold text-neutral-900 mb-2;
+  @apply line-clamp-2 leading-tight;
+}
+
+.portfolio-description {
+  @apply text-sm text-neutral-600 mb-3 leading-relaxed;
+  @apply line-clamp-2;
+}
+
+.portfolio-category {
+  @apply flex justify-end;
+}
+
+.category-badge {
+  @apply px-3 py-1 rounded-full text-xs font-medium;
+  @apply bg-neutral-100 text-neutral-700;
+}
+
+.category-badge.development {
+  @apply bg-accent-100 text-accent-700;
+}
+
+.category-badge.publishing {
+  @apply bg-primary-100 text-primary-700;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-section h1 {
+    @apply text-3xl;
   }
 
-  .filters {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-
-    button {
-      padding: 0.5rem 1rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      background: #fff;
-      cursor: pointer;
-
-      &:hover {
-        background: #f0f0f0;
-      }
-
-      &.active {
-        background: #007bff;
-        color: white;
-        border-color: #007bff;
-      }
-    }
+  .hero-section p {
+    @apply text-lg;
   }
 
   .portfolio-grid {
-    margin: 0 auto;
-    max-width: 1300px;
+    @apply columns-1 gap-4;
   }
 
-  .portfolio-item {
-    width: 100%;
-    margin-bottom: 1.5rem;
-
-    a {
-      display: flex;
-      min-height: 100px;
-      align-items: center;
-      text-decoration: none;
-      position: relative;
-      border: 1px solid #eee;
-      border-radius: 10px;
-      overflow: hidden;
-      padding: 10px;
-      cursor: pointer;
-      background: #fff;
-    }
-
-    img {
-      width: 100%;
-      object-fit: cover;
-      border-radius: 5px;
-    }
-
-    .overlay {
-      display: none;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      color: white;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      border-radius: 5px;
-      padding: 0 10px;
-      box-sizing: border-box;
-
-      strong {
-        font-size: 1.1rem;
-        font-weight: bold;
-        margin-bottom: 0.5rem;
-        text-align: center;
-        letter-spacing: -0.5px;
-        line-height: 1.3;
-        white-space: normal;
-      }
-
-      em {
-        font-size: 0.8rem;
-        text-align: center;
-        white-space: normal;
-        line-height: 1.3;
-      }
-    }
-
-    &:hover .overlay {
-      display: flex;
-    }
+  .portfolio-card {
+    @apply mx-2;
   }
 
-  @media (min-width: 1025px) {
-    .portfolio-item {
-      width: calc(20% - 1.2rem);
-    }
+  .portfolio-content {
+    @apply p-4;
   }
 
-  @media (max-width: 1024px) {
-    .portfolio-item {
-      width: calc(33.33% - 1.33rem);
-    }
-
-    h1 {
-      font-size: 2rem;
-    }
-
-    .overlay strong {
-      font-size: 1.2rem;
-    }
-
-    .overlay em {
-      font-size: 0.9rem;
-    }
+  .filters {
+    @apply flex-col gap-1 p-1;
   }
 
-  @media (max-width: 480px) {
-    .portfolio-item {
-      width: 100%;
-    }
+  .filter-btn {
+    @apply px-4 py-2 min-w-[100px];
+  }
+}
 
-    .overlay strong {
-      font-size: 1rem;
-    }
-
-    .overlay em {
-      font-size: 0.8rem;
-    }
+@media (max-width: 640px) {
+  .portfolio-title {
+    @apply text-base;
   }
 }
 </style>
