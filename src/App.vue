@@ -39,19 +39,19 @@ onMounted(() => {
         <div class="max-w-screen-2xl mx-auto relative z-10">
           <div class="flex flex-col md:flex-row justify-between items-baseline mb-24 pb-12 scroll-observe border-b border-white/5">
             <div class="line-reveal">
-              <span class="text-[10px] font-black tracking-[0.6em] uppercase text-white/30">01 — RESEARCH DOMAINS</span>
+              <span class="text-[10px] font-black tracking-[0.6em] uppercase text-white/30">01 — CORE SKILLS</span>
             </div>
             <div class="line-reveal">
-              <span class="text-3xl md:text-5xl font-black tracking-tighter uppercase italic">The Physics of Code.</span>
+              <span class="text-3xl md:text-5xl font-black tracking-tighter uppercase italic">Crafting Digital Experiences.</span>
             </div>
           </div>
           
           <div class="mb-32 max-w-4xl scroll-observe">
             <h2 class="text-4xl md:text-7xl font-black tracking-tight mb-8">
-              LIFTING THE <br/>CONVENTIONAL.
+              BUILDING THE <br/>FUTURE WEB.
             </h2>
             <p class="text-2xl md:text-3xl font-light text-white/50 leading-tight">
-              우리는 웹의 <span class="text-white font-medium">물리적 한계</span>를 실험합니다. 인천 청라의 R&D 센터에서 개발되는 로컬 안티그라비티 아키텍처는 데이터의 무게를 없애고 사용자 경험을 가볍게 만듭니다.
+              고품질의 <span class="text-white font-medium">웹 표준과 접근성</span>을 기반으로, 사용자 친화적인 인터페이스와 최적화된 퍼포먼스를 제공합니다.
             </p>
           </div>
           
@@ -96,17 +96,17 @@ onMounted(() => {
       <section id="contact-top" class="py-60 px-6 bg-white text-black relative overflow-hidden">
         <div class="max-w-screen-2xl mx-auto text-center scroll-observe relative z-10">
           <div class="line-reveal mb-8">
-            <span class="text-[12vw] font-black leading-[0.8] tracking-tighter uppercase">JOIN THE <br/>ELEVATION.</span>
+            <span class="text-[12vw] font-black leading-[0.8] tracking-tighter uppercase">LET'S CREATE <br/>TOGETHER.</span>
           </div>
           <p class="max-w-2xl mx-auto text-xl font-medium text-black/60 mb-16">
-            중력이 사라진 곳에서 새로운 가능성을 탐구하세요. 인천 청라 반중력 프로젝트팀은 언제나 새로운 파트너를 환영합니다.
+            함께 일할 기회를 찾고 계신가요? 새로운 프로젝트에 대한 문의나 협업 제안을 언제든지 환영합니다.
           </p>
           <div class="flex flex-col sm:flex-row gap-6 justify-center">
-            <a href="mailto:hello@antigravity.io" class="px-12 py-6 bg-black text-white font-black text-sm uppercase tracking-widest hover:scale-105 transition-transform flex items-center justify-center">
-              실험실 문의하기
+            <a href="mailto:serkee@naver.com" class="px-12 py-6 bg-black text-white font-black text-sm uppercase tracking-widest hover:scale-105 transition-transform flex items-center justify-center">
+              프로젝트 문의하기
             </a>
             <button class="px-12 py-6 border-2 border-black text-black font-black text-sm uppercase tracking-widest hover:bg-black hover:text-white transition-all">
-              프로젝트 제안서
+              이력서 보기
             </button>
           </div>
         </div>

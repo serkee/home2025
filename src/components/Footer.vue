@@ -12,8 +12,8 @@
             </h4>
             <div class="space-y-2">
               <span class="text-[10px] font-black text-white/30 uppercase tracking-widest block">Direct Link</span>
-              <a href="mailto:hq@antigravity.io" class="text-2xl font-light underline underline-offset-8 decoration-white/20 hover:decoration-white transition-all">
-                hq@antigravity.io
+              <a href="mailto:serkee@naver.com" class="text-2xl font-light underline underline-offset-8 decoration-white/20 hover:decoration-white transition-all">
+                serkee@naver.com
               </a>
             </div>
          </div>
