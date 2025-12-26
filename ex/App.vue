@@ -1,12 +1,11 @@
 
-<script setup>
+<script setup lang="ts">
 import { onMounted } from 'vue';
 import Navbar from './components/Navbar.vue';
 import Hero from './components/Hero.vue';
 import FeatureList from './components/FeatureList.vue';
 import PortfolioGrid from './components/PortfolioGrid.vue';
 import Footer from './components/Footer.vue';
-import CustomCursor from './components/CustomCursor.vue';
 
 onMounted(() => {
   const observer = new IntersectionObserver((entries) => {
@@ -23,7 +22,6 @@ onMounted(() => {
 
 <template>
   <div class="bg-black text-white selection:bg-white selection:text-black min-h-screen">
-    <CustomCursor />
     <Navbar />
     
     <main>
