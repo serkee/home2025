@@ -97,6 +97,14 @@ export default {
     return {
       projects: [
         {
+          id: 1001,
+          title: "가설재 장터",
+          description: "vue, supabase 풀스텍",
+          thumbnail: require("@/assets/images/contents/thumb_market.png"),
+          link: "",
+          class: "development",
+        },
+        {
           id: 999,
           title: "루트파인딩",
           description: "Vue, 파이어베이스",

@@ -3,7 +3,8 @@
 import { ref, computed, watch } from 'vue';
 
 const projects = [
-  { id: 999, title: "루트파인딩", category: "Vue, 파이어베이스", description: "반중력 경로 탐색 엔진", imageUrl: require("@/assets/images/contents/thumb_route.png"), link: "https://routefinding.kr/", type: "development" },
+{ id: 1001, title: "가설재 플랫폼", category: "Vue, supabase, 풀스텍", description: "가설재 중계 거래 플래폼", imageUrl: require("@/assets/images/contents/thumb_platform.png"), link: "https://new-platform-nine.vercel.app/", type: "development" },  
+{ id: 999, title: "루트파인딩", category: "Vue, 파이어베이스", description: "반중력 경로 탐색 엔진", imageUrl: require("@/assets/images/contents/thumb_route.png"), link: "https://routefinding.kr/", type: "development" },
   { id: 998, title: "태강가설", category: "Vue, 파이어베이스", description: "건설 자재 관리 시스템", imageUrl: require("@/assets/images/contents/thumb_taekang.png"), link: "https://taekang.shop", type: "development" },
   { id: 1000, title: "러닝계산기", category: "Vue", description: "페이스 및 칼로리 연산 도구", imageUrl: require("@/assets/images/contents/thumb_run.jpg"), link: "https://calcul-f8059.web.app/", type: "development" },
   { id: 1, title: "메리츠 채용", category: "웹퍼블리싱", description: "인재 영입 플랫폼 구축", imageUrl: require("@/assets/images/contents/thumb_meritz.png"), link: "https://recruit.meritzfire.com/new/main.do", type: "publishing" },
