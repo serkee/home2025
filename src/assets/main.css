@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 1. 폰트 설정 (Google Fonts) */
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Jua&display=swap');
+:root {
+  --bg-dark: #030712; /* gray-950 */
+  --text-light: #f9fafb; /* gray-50 */
+}
+
+/* 2. 기본 스타일 */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  font-family: 'Jua', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* 3. 타이틀용 폰트 (Syncopate) - React 코드의 font-display에 해당 */
+.font-display {
+  font-family: 'Do Hyeon', sans-serif;
+  letter-spacing: -0.05em;
+}
+
+/* 4. 본문용 폰트 - React 코드의 font-body에 해당 */
+.font-body {
+  font-family: 'Jua', sans-serif;
+}
+
+/* 5. 스크롤바 커스텀 (다크 모드 감성) */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1f2937; /* gray-800 */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #374151; /* gray-700 */
+}
+
+/* 6. 선택 영역 색상 (React의 selection 클래스 지원용) */
+::selection {
+  background-color: #f3f4f6; /* gray-100 */
+  color: #111827; /* gray-900 */
+}
+
+/* 7. 부드러운 스크롤 */
+html {
+  scroll-behavior: smooth;
+}

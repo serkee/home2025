@@ -1,19 +1,31 @@
-import { createRouter, createWebHistory } from 'vue-router';
-  import HomePage from '../views/HomePage.vue';
-  import ServicesPage from '../views/ServicesPage.vue';
-  import PortfolioPage from '../views/PortfolioPage.vue';
-  import ContactPage from '../views/ContactPage.vue';
+import { createRouter, createWebHashHistory } from 'vue-router';
+import Home from '../views/Home.vue';
+import ProjectList from '../views/ProjectList.vue';
 
-  const routes = [
-    { path: '/', name: 'Home', component: HomePage },
-    { path: '/services', name: 'Services', component: ServicesPage },
-    { path: '/portfolio', name: 'Portfolio', component: PortfolioPage },
-    { path: '/contact', name: 'Contact', component: ContactPage },
-  ];
+const routes = [
+  { 
+    path: '/', 
+    name: 'Home',
+    component: Home 
+  },
+  { 
+    path: '/list/:category', 
+    name: 'ProjectList',
+    component: ProjectList, 
+    props: true 
+  },
+  { 
+    path: '/:pathMatch(.*)*', 
+    redirect: '/' 
+  }
+];
 
-  const router = createRouter({
-    history: createWebHistory(process.env.BASE_URL),
-    routes,
-  });
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes, // 'routes: routes'의 축약형입니다.
+  scrollBehavior() {
+    return { top: 0 };
+  }
+});
 
-  export default router;
+export default router;
