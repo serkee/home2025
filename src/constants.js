@@ -5,7 +5,7 @@ export const PROJECTS = [
       title: '[실습용] 위치기반 혼밥 평가 웹앱(카카오맵 API)',
       year: '2026',
       tags: ['react', 'Supabase(PostgreSQL)', 'Tailwind', '퍼블리싱'],
-      url: 'http://34.136.185.177:8080/',
+      url: 'https://matzip-blond.vercel.app/',
       description: ''
     },
     {
