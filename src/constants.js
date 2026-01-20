@@ -1,11 +1,20 @@
 export const PROJECTS = [
+  {
+      id: 6,
+      category: 'dev',
+      title: '[실습용] 위치기반 혼밥 평가 웹앱(카카오맵 API)',
+      year: '2026',
+      tags: ['react', 'Supabase(PostgreSQL)', 'Tailwind', '퍼블리싱'],
+      url: 'http://34.136.185.177:8080/',
+      description: ''
+    },
     {
       id: 1,
       category: 'dev',
       title: '실습용 사내관리시스템',
       year: '2026',
-      tags: ['java', 'Spring Boot', 'MySql', 'Supabase', 'Tailwind', '디자인', '퍼블리싱'],
-      url: 'https://github.com/your-username/project-1',
+      tags: ['java(Spring Boot)', 'Google Cloud Platform 서버', 'Supabase(PostgreSQL)', 'Tailwind', '퍼블리싱'],
+      url: 'http://34.136.185.177:8080/',
       description: ''
     },
     {
