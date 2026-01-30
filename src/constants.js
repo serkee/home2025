@@ -1,5 +1,14 @@
 export const PROJECTS = [
   {
+    id: 7,
+    category: 'dev',
+    title: '[실습용] 금융 AI 챗봇',
+    year: '2026',
+    tags: ['Hugging Face(ai)', 'react', 'typescript', 'Vite', 'Spring Boot', 'Supabase(PostgreSQL)', 'Vercel', 'Render', 'Tailwind'],
+    url: 'https://schat-blue.vercel.app',
+    description: ''
+  },
+  {
     id: 6,
     category: 'dev',
     title: '[실습용] 위치기반 혼밥 평가 웹앱(카카오맵 API)',
