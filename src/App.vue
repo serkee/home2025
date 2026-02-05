@@ -1,5 +1,6 @@
 <template>
   <div id="app-container">
+    <LanguageSwitcher />
     <router-view v-slot="{ Component }">
       <transition name="page-fade" mode="out-in">
         <component :is="Component" />
@@ -9,7 +10,7 @@
 </template>
 
 <script setup>
-// 아무 내용 없음
+import LanguageSwitcher from './components/LanguageSwitcher.vue';
 </script>
 
 <style>

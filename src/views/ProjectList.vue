@@ -11,7 +11,7 @@
           <ArrowLeft class="w-5 h-5 text-gray-500 group-hover:text-gray-900" />
         </div>
         <span class="font-display text-xl tracking-wide text-gray-300 group-hover:text-white transition-colors">
-          HOME
+          {{ i18n.t('home') }}
         </span>
       </button>
       
@@ -20,7 +20,7 @@
           {{ title }}
         </span>
         <span class="block font-body text-xs text-gray-500 mt-1">
-          Total {{ filteredProjects.length }} Projects
+          {{ i18n.t('totalProjects').replace('{count}', filteredProjects.length) }}
         </span>
       </div>
     </Motion>
@@ -47,12 +47,12 @@
       </div>
       
       <div v-if="filteredProjects.length === 0" class="container mx-auto px-6 py-20 text-center text-gray-500 font-body">
-        프로젝트가 준비중입니다.
+        {{ i18n.t('comingSoon') }}
       </div>
     </main>
 
     <footer class="py-10 text-center text-gray-600 font-body text-sm">
-      &copy; {{ new Date().getFullYear() }} Gray Tone Portfolio. All rights reserved.
+      &copy; {{ new Date().getFullYear() }} {{ i18n.t('allRights') }}
     </footer>
   </div>
 </template>
@@ -64,6 +64,7 @@ import { Motion } from "@motionone/vue";
 import { ArrowLeft } from 'lucide-vue-next';
 import ProjectItem from '../components/ProjectItem.vue';
 import { PROJECTS } from '../constants.js';
+import { i18n } from '../i18n';
 
 const route = useRoute();
 const router = useRouter();
@@ -73,6 +74,8 @@ onMounted(() => { window.scrollTo(0, 0); });
 const category = computed(() => route.params.category);
 const validCategory = computed(() => (category.value === 'pub' ? 'pub' : 'dev'));
 const filteredProjects = computed(() => PROJECTS.filter(p => p.category === validCategory.value));
-const title = computed(() => (validCategory.value === 'dev' ? 'Development' : 'Publishing'));
-const subtitle = computed(() => (validCategory.value === 'dev' ? '개발 포트폴리오' : '퍼블리싱 포트폴리오'));
+const title = computed(() => (validCategory.value === 'dev' ? i18n.t('devFull') : i18n.t('pubFull')));
+const subtitle = computed(() => {
+    return validCategory.value === 'dev' ? i18n.t('devPortfolioTitle') : i18n.t('pubPortfolioTitle');
+});
 </script>

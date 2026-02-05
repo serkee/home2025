@@ -17,13 +17,13 @@
           </div>
         </div>
         <h2 class="text-5xl md:text-7xl lg:text-8xl font-display text-gray-100 group-hover:text-gray-900 transition-colors duration-500 uppercase tracking-tight leading-none">
-          {{ project.title }}
+          {{ project.title[i18n.locale] || project.title.ko }}
         </h2>
         <div class="flex flex-wrap gap-2 mt-4">
           <span v-for="(tag, i) in project.tags" :key="i"
             class="px-3 py-1 border border-gray-700 rounded-full text-xs md:text-sm font-body text-gray-400 group-hover:border-gray-400 group-hover:text-gray-600 transition-colors duration-300"
           >
-            {{ tag }}
+            {{ getTagLabel(tag) }}
           </span>
         </div>
       </div>
@@ -36,11 +36,17 @@
 /* eslint-disable no-undef */
 import { Motion, Presence } from "@motionone/vue";
 import { ArrowUpRight } from 'lucide-vue-next';
+import { i18n } from '../i18n';
 
 const props = defineProps({
   project: Object,
   index: Number
 });
+
+const getTagLabel = (tag) => {
+  if (typeof tag === 'string') return tag;
+  return tag[i18n.locale] || tag.ko;
+};
 
 const openProject = () => {
   if (props.project && props.project.url) {
