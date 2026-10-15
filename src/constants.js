@@ -1,9 +1,21 @@
 export const PROJECTS = [
   {
+    id: 10,
+    category: 'dev',
+    title: {
+      ko: '**은행 AI기반 금융정보 플랫폼',
+      en: '**Bank AI-Based Financial Information Platform'
+    },
+    year: '2026',
+    tags: ['react', 'Next.js'],
+    url: 'https://solgit.shinhan.com',
+    description: ''
+  },
+  {
     id: 9,
     category: 'dev',
     title: {
-      ko: '지능형 코인 투자 어시스트 포털',
+      ko: '지능형 코인 투자 어시스트 포털(실습용)',
       en: 'Intelligent Coin Investment Portal'
     },
     year: '2026',
@@ -15,7 +27,7 @@ export const PROJECTS = [
     id: 8,
     category: 'dev',
     title: {
-      ko: '실시간자리 예약시스템',
+      ko: '실시간자리 예약시스템(실습용)',
       en: 'Real-time Seat Reservation'
     },
     year: '2026',
@@ -27,7 +39,7 @@ export const PROJECTS = [
     id: 7,
     category: 'dev',
     title: {
-      ko: '금융 AI 챗봇',
+      ko: '금융 AI 챗봇(실습용)',
       en: 'Financial AI Chatbot'
     },
     year: '2026',
@@ -39,7 +51,7 @@ export const PROJECTS = [
     id: 6,
     category: 'dev',
     title: {
-      ko: '위치기반 혼밥 평가 웹앱(카카오맵 API)',
+      ko: '위치기반 혼밥 평가 웹앱(카카오맵 API)(실습용)',
       en: 'Solo Dining Evaluation Web App'
     },
     year: '2025',
@@ -51,7 +63,7 @@ export const PROJECTS = [
     id: 1,
     category: 'dev',
     title: {
-      ko: '사내관리시스템',
+      ko: '사내관리시스템(실습용)',
       en: 'Practice Admin System'
     },
     year: '2025',
