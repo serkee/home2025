@@ -3,11 +3,11 @@ export const PROJECTS = [
     id: 10,
     category: 'dev',
     title: {
-      ko: '**은행 AI기반 금융정보 플랫폼',
+      ko: '**은행 AI기반 금융정보 플랫폼 프론트엔드개발',
       en: '**Bank AI-Based Financial Information Platform'
     },
     year: '2026',
-    tags: ['react', 'Next.js'],
+    tags: ['react', 'Next.js', 'typescript'],
     url: 'https://solgit.shinhan.com',
     description: ''
   },
@@ -56,7 +56,7 @@ export const PROJECTS = [
     },
     year: '2025',
     tags: ['react', 'Supabase(PostgreSQL)', 'Vercel', 'Tailwind', { ko: '퍼블리싱', en: 'Publishing' }],
-    url: 'https://matzip-blond.vercel.app/',
+    url: 'https://matzip1.vercel.app/',
     description: ''
   },
   {
