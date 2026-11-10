@@ -83,6 +83,8 @@ export const PROJECTS = [
     url: 'https://new-platform-nine.vercel.app/',
     description: ''
   },
+  //https://gitlab.com/serkee80/new_platform
+  //수파베이스 : https://supabase.com/dashboard/project/xfjktvarvohyurgkwpeo
   {
     id: 3,
     category: 'dev',
@@ -103,8 +105,8 @@ export const PROJECTS = [
       en: 'Taekang Scaffolding'
     },
     year: '2025',
-    tags: ['Vue.js', 'Next.js', 'Supabase', { ko: '디자인', en: 'Design' }, { ko: '퍼블리싱', en: 'Publishing' }],
-    url: 'https://taekang.shop/',
+    tags: ['Vue.js', 'Nuxt.js', 'Supabase', { ko: '디자인', en: 'Design' }, { ko: '퍼블리싱', en: 'Publishing' }],
+    url: 'https://taekang1-8fdd4.web.app/',
     description: ''
   },
   {
@@ -115,7 +117,7 @@ export const PROJECTS = [
       en: 'Running Calculator'
     },
     year: '2025',
-    tags: ['Vue.js', 'Next.js', { ko: '디자인', en: 'Design' }, { ko: '퍼블리싱', en: 'Publishing' }],
+    tags: ['Vue.js', 'Nuxt.js', { ko: '디자인', en: 'Design' }, { ko: '퍼블리싱', en: 'Publishing' }],
     url: 'https://calcul-f8059.web.app/',
     description: ''
   },
